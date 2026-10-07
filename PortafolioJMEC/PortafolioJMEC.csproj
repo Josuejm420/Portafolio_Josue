@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CodexSharp" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\Josue\OneDrive\Documentos\Escritorio\PROGRAMACION EN LA NUBE\launchSettings.json" Link="launchSettings.json" />
+  </ItemGroup>
+
+</Project>

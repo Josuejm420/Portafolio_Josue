@@ -1,0 +1,92 @@
+﻿@model IEnumerable<PortafolioJMEC.Models.Proyecto>
+
+@{
+    ViewData["Title"] = "Proyectos";
+}
+
+<div class="container py-4">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold display-5">Mis Proyectos</h1>
+        <p class="text-muted">Proyectos destacados y soluciones desarrolladas.</p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var proyecto in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
+                        
+                        @* Si contiene enlace de YouTube, muestra el iframe con audio habilitado *@
+                        @if (!string.IsNullOrEmpty(proyecto.VideoUrl) && proyecto.VideoUrl.Contains("youtube.com"))
+                        {
+                            <div class="ratio ratio-16x9">
+                                <iframe src="@proyecto.VideoUrl?enablejsapi=1" 
+                                        title="@proyecto.Titulo" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                        allowfullscreen 
+                                        style="border:0;"></iframe>
+                            </div>
+                        }
+                        @* Si es un video local MP4 *@
+                        else if (!string.IsNullOrEmpty(proyecto.VideoUrl))
+                        {
+                            <video controls class="w-100" style="height: 250px; object-fit: cover;">
+                                <source src="@proyecto.VideoUrl" type="video/mp4">
+                                Tu navegador no soporta el reproductor de video.
+                            </video>
+                        }
+                        @* Si solo tiene imagen: clicable para abrir modal *@
+                        else if (!string.IsNullOrEmpty(proyecto.ImagenUrl))
+                        {
+                            <a href="#modalFoto-@proyecto.Id" data-bs-toggle="modal">
+                                <img src="@proyecto.ImagenUrl" 
+                                     class="card-img-top img-fluid" 
+                                     alt="@proyecto.Titulo" 
+                                     style="height: 250px; object-fit: cover; cursor: pointer;" 
+                                     title="Haz clic para ver la imagen completa" />
+                            </a>
+
+                            <!-- Modal para ver la imagen en grande -->
+                            <div class="modal fade" id="modalFoto-@proyecto.Id" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content bg-transparent border-0 text-end">
+                                        <button type="button" class="btn-close btn-close-white mb-2 ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <div class="modal-body p-0 text-center">
+                                            <img src="@proyecto.ImagenUrl" class="img-fluid rounded shadow-lg" alt="@proyecto.Titulo" style="max-height: 85vh; object-fit: contain;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="card-body p-4 d-flex flex-column">
+                            <h4 class="card-title fw-bold text-primary mb-2">@proyecto.Titulo</h4>
+                            <p class="card-text text-secondary mb-4 flex-grow-1">@proyecto.Descripcion</p>
+                            
+                            <div class="mb-3">
+                                @foreach (var tec in proyecto.Tecnologias)
+                                {
+                                    <span class="badge bg-secondary me-1 mb-1">@tec</span>
+                                }
+                            </div>
+                            
+                            <div class="d-flex gap-2">
+                                <a href="@proyecto.LinkGithub" target="_blank" class="btn btn-outline-dark btn-sm fw-semibold">
+                                    <i class="bi bi-github me-1"></i>Código GitHub
+                                </a>
+                                @if (!string.IsNullOrEmpty(proyecto.LinkDemo) && proyecto.LinkDemo != "#")
+                                {
+                                    <a href="@proyecto.LinkDemo" target="_blank" class="btn btn-primary btn-sm fw-semibold">
+                                        <i class="bi bi-play-circle me-1"></i>Ver en YouTube
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

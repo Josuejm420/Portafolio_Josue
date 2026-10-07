@@ -1,0 +1,35 @@
+﻿[
+  {
+    "Id": 1,
+    "Titulo": "FerreteríaApp - App Móvil Administrativa",
+    "Descripcion": "Aplicación móvil para la gestión administrativa de una ferretería. Permite el control de inventarios, registro de ventas y administración de productos para la toma de decisiones.",
+    "ImagenUrl": "/imagenes/ferreteria.jpg",
+    "VideoUrl": "",
+    "Tecnologias": [
+      "Android",
+      "C#",
+      ".NET",
+      "SQL Server",
+      "API REST"
+    ],
+    "LinkGithub": "https://github.com/Josuejm420/FerreteriaApp",
+    "LinkDemo": "#"
+  },
+  {
+    "Id": 2,
+    "Titulo": "Feriando - Frontend Hackathon",
+    "Descripcion": "App Movil interactiva desarrollada en competencia Hackathon. Enfocada en UX/UI, maquetación responsiva y consumo de servicios API para comercio(trueque) local dirigido a la mujeres afrodecendiente.",
+    "ImagenUrl": "",
+    "VideoUrl": "https://www.youtube.com/embed/HV0mGu1Kf4E",
+    "Tecnologias": [
+      "JavaScript",
+      "HTML5/CSS3",
+      "Bootstrap 5",
+      "API REST",
+      "Git"
+    ],
+    "LinkGithub": "https://github.com/Ronald12-wp/Feriando-Frontend_Hackathon",
+    "LinkDemo": "https://youtube.com/shorts/HV0mGu1Kf4E"
+  }
+]
+
