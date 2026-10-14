@@ -11,7 +11,6 @@ on:
             pull_request:
             branches: 
             - main
-
 jobs: 
    saludar: 
        runs-on: ubuntu-latest
@@ -24,7 +23,8 @@ jobs:
 
        - name: Listar los archivo del repositorio
          run: 
-           echo "El repositorio${{github.repository}} contiene los siguientes archivos"
+           echo "El repositorio${{github.repository}} contiene los siguientes archivos: "
+           tree
 
         
           
