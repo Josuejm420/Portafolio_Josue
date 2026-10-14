@@ -7,7 +7,7 @@ on:
             - main
             paths: 
             - 'PortafolioJMEC/**'
-            - '.github/workflow/mundo-mundo'
+            - '.github/workflows/mundo-mundo'
             pull_request:
             branches: 
             - main
