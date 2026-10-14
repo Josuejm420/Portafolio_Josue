@@ -1,0 +1,30 @@
+name: Hola Mundo 
+
+on: 
+    workflow_dispatch: #ejecucion normla
+    push: 
+       branches: 
+            - main
+            paths: 
+            - 'PortafolioJMEC/**'
+            - '.github/workflows/mundo-mundo'
+            pull_request:
+            branches: 
+            - main
+
+jobs: 
+   saludar: 
+       runs-on: ubuntu-latest
+       steps:
+       - name: Muestra el saludo Hola Mundo
+         run: echo "Hola Mundo, 3ro ISI"
+         
+       - name: Checkout
+         uses: actions/checkout@v7.0.1
+
+       - name: Listar los archivo del repositorio
+         run: 
+           echo "El repositorio${{github.repository}} contiene los siguientes archivos"
+
+        
+          
